@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-on:click="handle">{{number}}</div>
+
+    </div>
+
+
+<script>
+    new Vue({
+        el:"#root",
+        data:{
+            msg:"刘德华",
+            number:"<h1>hhh</h1>"
+        },
+        methods:{
+            handle:function () {
+                alert(77);
+            }
+        }
+    })
+
+</script>
+</body>
+
+
+</html>
