@@ -7,8 +7,11 @@
 </head>
 <body>
     <div id="root">
-        <div v-on:click="handle">{{number}}</div>
-
+        <div v-on:click="handle">hello world</div>
+        <div v-bind:title="title">hello world</div>
+        <input :value="content">
+        <input v-model="content">
+        <div>{{content}}</div>
     </div>
 
 
@@ -16,12 +19,12 @@
     new Vue({
         el:"#root",
         data:{
-            msg:"刘德华",
-            number:"<h1>hhh</h1>"
+            title:"刘德华",
+            content:"this is content",
         },
         methods:{
             handle:function () {
-                alert(77);
+                alert(111);
             }
         }
     })
