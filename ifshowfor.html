@@ -7,8 +7,13 @@
 </head>
 <body>
     <div id="root">
-        <div v-if="show">hello world</div>
+        <div v-show="show">hello world</div>
         <button @click="handleClick">toggle</button>
+        <div v-if="show2">hello world2</div>
+        <button @click="handleClick2">toggle2</button>
+        <ul>
+            <li v-for="(item,index) of list" :key="index">{{item}}</li>
+        </ul>
     </div>
 
 
@@ -17,10 +22,15 @@
         el:"#root",
         data:{
             show:true,
+            show2:true,
+            list:[1,2,3],
         },
         methods:{
             handleClick:function () {
                 this.show = !this.show;
+            },
+            handleClick2:function () {
+                this.show2 = !this.show2;
             }
         }
     })
