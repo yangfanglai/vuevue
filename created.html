@@ -12,6 +12,7 @@
         <input :value="content">
         <input v-model="content">
         <div>{{content}}</div>
+        <div>{{ content.split('').reverse().join('') }}</div>
         <p>Using mustaches: {{ rawHtml }}</p>
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
         <div v-bind:id="dynamicId"></div>
