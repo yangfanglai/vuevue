@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件和属性绑定</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-on:click="handle">hello world</div>
+        <div v-bind:title="title">hello world</div>
+        <input :value="content">
+        <input v-model="content">
+        <div>{{content}}</div>
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        <div v-bind:id="dynamicId"></div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        {{ number + 1 }}
+
+        {{ ok ? 'YES' : 'NO' }}
+
+        {{ title.split('').reverse().join('') }}
+
+        <div v-bind:id="'list-' + id"></div>
+    </div>
+
+
+<script>
+    new Vue({
+        el:"#root",
+        created:function(){
+            console.log('this is created'+this.title);
+        },
+        data:{
+            title:"刘德华",
+            content:"this is content",
+            rawHtml:'<span style="color: red">This should be red.</span>',
+            dynamicId:'dynamic',
+            isButtonDisabled:true,
+            number:10,
+            id:123,
+            ok:'',
+        },
+        methods:{
+            handle:function () {
+                alert(111);
+            }
+        }
+    })
+
+</script>
+</body>
+
+
+</html>
