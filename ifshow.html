@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if,v-show,v-for 指令</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-show="show">hello world</div>
+        <button @click="handleClick">toggle</button>
+        <div v-if="show2">hello world2</div>
+        <button @click="handleClick2">toggle2</button>
+        <ul>
+            <li v-for="(item,index) of list" :key="index">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="lists in list">{{lists}}</li>
+        </ul>
+
+        <h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+
+        <div v-if="Math.random() > 0.5">
+            Now you see me
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
+
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address">
+        </template>
+        <button v-on:click="toggleUsername">toggle username</button>
+        <p></p>
+        <template v-if="loginType2 === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </template>
+        <button v-on:click="toggleUsername2">toggle username2</button>
+    </div>
+
+
+<script>
+
+    new Vue({
+        el:"#root",
+        data:{
+            show:true,
+            show2:true,
+            list:[1,2,3],
+            ok:true,
+            type:'D',
+            loginType:'username',
+            loginType2:'username',
+        },
+        methods:{
+            handleClick:function () {
+                this.show = !this.show;
+            },
+            handleClick2:function () {
+                this.show2 = !this.show2;
+            },
+            toggleUsername:function () {
+                this.loginType = this.loginType=='username'?'email':'username';
+            },
+            toggleUsername2:function () {
+                this.loginType2 = this.loginType2=='username'?'email':'username';
+            },
+        }
+    })
+
+</script>
+</body>
+
+
+</html>
