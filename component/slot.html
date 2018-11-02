@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="slot-demo">
+    <base-layout>
+        <template slot="header">
+            <h1>Here might be a page title</h1>
+        </template>
+
+        <p>A paragraph for the main content.</p>
+        <p>And another one.</p>
+
+        <template slot="footer">
+            <p>Here's some contact info</p>
+        </template>
+    </base-layout>
+
+    <base-layout>
+        <h1 slot="header">Here might be a page title2</h1>
+
+        <p>A paragraph for the main content2.</p>
+        <p>And another one2.</p>
+
+        <p slot="footer">Here's some contact info2</p>
+    </base-layout>
+
+    <navigation-link url="/profile">
+        Logged in as {{ name }}
+    </navigation-link>
+</div>
+
+<script>
+    Vue.component('base-layout', {
+        template: `
+            <div class="container">
+              <header>
+                <slot name="header"></slot>
+              </header>
+              <main>
+                <slot></slot>
+              </main>
+              <footer>
+                <slot name="footer"></slot>
+              </footer>
+            </div>
+        `
+    })
+
+    Vue.component('navigation-link', {
+        props:['url'],
+        template: `
+            <a
+              v-bind:href="url"
+              class="nav-link"
+            >
+              <slot></slot>
+            </a>
+        `
+    })
+
+    new Vue({
+        el: "#slot-demo",
+        data:{
+            name:'abcdef'
+        }
+    })
+
+
+</script>
+</body>
+
+
+</html>
